@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio Chintya</title>
+<style>
+:root {
+  --blue-light:#7ec8e3;
+  --blue-mid:#1e3a8a;
+  --blue-dark:#0d1b3a;
+  --white:#fff;
+  --muted:#bbb;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body {
+  height:100%;
+  font-family:Inter, Poppins, sans-serif;
+  color:var(--white);
+  overflow-x:hidden;
+}
+
+/* === Background foto kamu === */
+body {
+  background: url('bg.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 27, 58, 0.7);
+  pointer-events: none;
+  z-index: -1; /* ⬅️ inilah kuncinya */
+}
+
+/* === Header === */
+header.sitebar {
+  position:fixed;
+  left:50%;
+  top:16px;
+  transform:translateX(-50%);
+  width:min(1100px,94%);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 14px;
+  border-radius:12px;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(6px);
+  z-index:100;
+}
+.brand .name { font-weight:700; font-size:1.2rem; }
+.brand .role { font-size:12px; color:var(--muted); }
+nav.buttons { display:flex; gap:8px; }
+.nav-btn {
+  background:transparent;
+  border:none;
+  color:var(--white);
+  padding:6px 12px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .18s;
+}
+.nav-btn:hover {
+  transform:translateY(-4px);
+  box-shadow:0 6px 18px rgba(255,255,255,0.2);
+}
+
+/* === Main content === */
+main.site-wrap {
+  max-width:1100px;
+  margin:0 auto;
+  padding:120px 20px 80px;
+  position:relative;
+  z-index:10;
+}
+section.page {
+  min-height:80vh;
+  padding:60px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:36px;
+  transition:all .6s ease;
+  position:relative;
+  background:rgba(0,0,0,0.45);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 0 40px rgba(0,0,0,0.4);
+}
+
+/* === Cards & content === */
+.card {
+  width:100%;
+  max-width:900px;
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(10px);
+  border-radius:16px;
+  padding:28px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+  position:relative;
+  z-index:2;
+}
+h1,h2,h3,h4 { color:var(--white); }
+p { color:var(--muted); line-height:1.6; }
+.quick { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+.quick a {
+  padding:8px 14px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.15);
+  text-decoration:none;
+  color:var(--white);
+  font-weight:600;
+  transition:all .16s;
+}
+.quick a:hover {
+  transform:translateY(-4px);
+  background:rgba(255,255,255,0.25);
+}
+
+/* === Hobi === */
+.hobi-box { display:flex; flex-direction:column; gap:20px; margin-top:20px; }
+.hobi-item {
+  position:relative;
+  padding:20px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(6px);
+}
+.hobi-title { font-weight:700; color:var(--white); margin-bottom:6px; }
+.hobi-sub { color:var(--muted); font-size:.95rem; }
+
+/* === Pendidikan === */
+.education-wrapper { display:flex; flex-direction:column; gap:20px; margin-top:20px; }
+.education-group { margin-bottom:20px; }
+.education-grid { display:flex; flex-wrap:wrap; gap:16px; }
+.education-card {
+  background:rgba(255,255,255,0.08);
+  padding:16px;
+  border-radius:12px;
+  backdrop-filter:blur(6px);
+  flex:1;
+  min-width:200px;
+}
+
+/* === Fade animation === */
+.fade-up { opacity:0; transform:translateY(18px); transition:all .8s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* === Foto === */
+.photo-wrapper { position:relative; display:inline-block; }
+.photo-wrapper::before {
+  content:'';
+  position:absolute; inset:-18px;
+  border-radius:50%;
+  border:3px solid rgba(126,200,227,0.5);
+  animation:spin 10s linear infinite;
+}
+.photo-wrapper img {
+  width:150px; height:150px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid rgba(126,200,227,0.5);
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  transition:transform 0.6s ease;
+}
+.photo-wrapper img:hover { transform:scale(1.05); }
+@keyframes spin { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
+
+footer { margin-top:60px; text-align:center; color:var(--muted); font-size:0.9rem; }
+
+@media(max-width:640px){
+  header.sitebar{flex-direction:column;gap:8px}
+  .quick a{font-size:.85rem}
+}
+</style>
+</head>
+<body>
+
+<header class="sitebar">
+  <div class="brand">
+    <div class="name">Chintya</div>
+    <div class="role">Mahasiswa Ilmu Komputer</div>
+  </div>
+  <nav class="buttons">
+    <button class="nav-btn" data-target="home">Beranda</button>
+    <button class="nav-btn" data-target="about">Tentang</button>
+    <button class="nav-btn" data-target="hobi">Hobi</button>
+    <button class="nav-btn" data-target="pendidikan">Pendidikan</button>
+    <button class="nav-btn" data-target="contact">Kontak</button>
+  </nav>
+</header>
+
+<main class="site-wrap">
+  <section id="home" class="page fade-up">
+    <div class="card" style="text-align:center;">
+      <div class="photo-wrapper" style="margin-bottom:20px;">
+        <img src="foto.jpg" alt="Foto Chintya">
+      </div>
+      <h1>Halo, saya Chintya</h1>
+      <p>Mahasiswa Ilmu Komputer semester awal. Baru belajar dasar pemrograman, senang mencoba hal baru, dan ingin terus berkembang.</p>
+      <div style="font-style:italic;color:rgba(126,200,227,0.7);margin-bottom:12px;">Belajar • Bereksplorasi • Berkembang</div>
+      <div class="quick">
+        <a href="#about">Tentang</a>
+        <a href="#hobi">Hobi</a>
+        <a href="#pendidikan">Pendidikan</a>
+        <a href="#contact">Kontak</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="page fade-up">
+    <div class="card">
+      <h2>Tentang Saya</h2>
+      <p>Saya baru mulai belajar komputer dan teknologi. Saat ini fokus memahami dasar pemrograman dan desain sederhana. Senang mencoba hal baru dan ingin berkembang setiap hari.</p>
+    </div>
+  </section>
+
+  <section id="hobi" class="page fade-up">
+    <div class="card hobi-box">
+      <div class="hobi-item">
+        <div class="hobi-title">Travelling</div>
+        <div class="hobi-sub">Menyukai perjalanan untuk mencari inspirasi dan pengalaman baru.</div>
+      </div>
+      <div class="hobi-item">
+        <div class="hobi-title">Menonton film</div>
+        <div class="hobi-sub">Suka mendapatkan makna dari film.</div>
+      </div>
+      <div class="hobi-item">
+        <div class="hobi-title">Minat</div>
+        <div class="hobi-sub">Belajar pemrograman dasar, desain sederhana, eksplorasi teknologi baru.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pendidikan" class="page fade-up">
+    <div class="card education-wrapper">
+      <h2>LATAR PENDIDIKAN</h2>
+      <div class="education-group">
+        <h3>Sekolah Dasar</h3>
+        <div class="education-grid">
+          <div class="education-card"><h4>SDN Ngronggo 2</h4><p>2013 - 2019</p></div>
+        </div>
+      </div>
+      <div class="education-group">
+        <h3>Sekolah Menengah Pertama</h3>
+        <div class="education-grid">
+          <div class="education-card"><h4>SMP Negeri 5 Kediri</h4><p>2019 - 2022</p></div>
+        </div>
+      </div>
+      <div class="education-group">
+        <h3>Sekolah Menengah Atas</h3>
+        <div class="education-grid">
+          <div class="education-card"><h4>SMA Katolik Trisakti Medan</h4><p>2022 - 2025</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="page fade-up">
+    <div class="card">
+      <h2>Kontak</h2>
+      <p>Email: <b>chintyagraceyla@gmail.com</b><br>
+      Instagram: <a href="https://www.instagram.com/grcylach" style="color:#fff;">@grcylach</a></p>
+    </div>
+  </section>
+
+  <footer>© 2025 Chintya</footer>
+</main>
+
+<script>
+const faders=document.querySelectorAll('.fade-up');
+const appearOptions={threshold:0.2,rootMargin:"0px 0px -50px 0px"};
+const appearOnScroll=new IntersectionObserver(function(entries,observer){
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  });
+},appearOptions);
+faders.forEach(fader=>{appearOnScroll.observe(fader);});
+
+document.querySelectorAll('.nav-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const target=document.getElementById(btn.dataset.target);
+    target.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
